@@ -10,7 +10,7 @@ const Home = () => {
 
   const fetchTodos = useCallback(() => {
     axios
-      .get("https://todolist-tew6.onrender.com/get")
+      .get("https://todobackend-k0td.onrender.com/get")
       .then((result) => {
         setTodos(result.data);
       })
@@ -26,7 +26,7 @@ const Home = () => {
   const handlecheck = useCallback((id) => {
     setChck((prevChck) => !prevChck);
     axios
-      .put(`https://todolist-tew6.onrender.com/update/${id}`)
+      .put(`https://todobackend-k0td.onrender.com/update/${id}`)
       .then((result) => {
         console.log(result);
         fetchTodos(); // Refresh the todo list after update
@@ -40,7 +40,7 @@ const Home = () => {
     setChck((prevChck) => !prevChck);
     console.log("delete");
     axios
-      .delete(`https://todolist-tew6.onrender.com/delete/${id}`)
+      .delete(`https://todobackend-k0td.onrender.com/delete/${id}`)
       .then((result) => {
         console.log(result);
         fetchTodos(); // Refresh the todo list after delete
