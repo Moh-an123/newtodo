@@ -1,0 +1,45 @@
+post:
+const addTask = (e) => { 
+    e.preventDefault(); 
+    console.log(e);
+    axios.post('http://127.0.0.1:3001/add', { task: task}) 
+        .then(res => { 
+            console.log(res); 
+            window.location.reload(); 
+        }) 
+        .catch(err => console.log(err)); 
+        console.log("helo")
+} 
+
+
+
+app.post("/addTodoList", (req, res) => { 
+    Todomodel.create({ 
+        task: req.body.task,  
+    }) 
+        .then((todo) => res.json(todo)) 
+        .catch((err) => res.json(err)); 
+}); 
+
+//my
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const Todomodel = require("./models/todo");
+
+const app = express();
+app.use(cors);
+app.use(express.json());
+mongoose.connect("mongodb://127.0.0.1/test");
+app.post("/add", (req, res) => {
+//   const val = req.body.val;
+  Todomodel.create({
+    task:req.body.task,
+  })
+    .then((result) => res.json(result))
+    .catch((err) => res.json(err));
+});
+
+app.listen(3001, () => {
+  console.log("Server is Running");
+});
