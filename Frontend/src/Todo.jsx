@@ -8,7 +8,7 @@ const Todo = () => {
     e.preventDefault();
     console.log(task);
     axios
-      .post("https://todolist-tew6.onrender.com/add", { task: task, finish: false })
+      .post("https://todobackend-k0td.onrender.com/add", { task: task, finish: false })
       .then((res) => {
         console.log(res);
         window.location.reload();
